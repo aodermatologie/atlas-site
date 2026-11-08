@@ -43,6 +43,9 @@ test('S3 : variables explicites, ou celles de l’add-on Cellar de Clever Cloud'
   assert.equal(cellar.manquantes.length, 0);
   assert.equal(cellar.config.endpoint, 'https://cellar-c2.services.clever-cloud.com');
   assert.equal(cellar.config.credentials.accessKeyId, 'id');
+  assert.equal(cellar.config.region, 'default', 'région littérale « default » pour Cellar');
+  const avecSchema = configS3({ CELLAR_ADDON_HOST: 'https://cellar-c2.services.clever-cloud.com', CELLAR_ADDON_KEY_ID: 'i', CELLAR_ADDON_KEY_SECRET: 's' });
+  assert.equal(avecSchema.config.endpoint, 'https://cellar-c2.services.clever-cloud.com');
   const explicite = configS3({ S3_ENDPOINT: 'https://s3.exemple', S3_ACCESS_KEY: 'a', S3_SECRET_KEY: 'b', CELLAR_ADDON_HOST: 'autre' });
   assert.equal(explicite.config.endpoint, 'https://s3.exemple');
   assert.equal(configS3({}).manquantes.length, 3);
