@@ -1,0 +1,54 @@
+---
+// Accueil : le livre s'ouvre (une fois par visite), puis la recherche et les modules apparaissent.
+import Page from '../layouts/Page.astro';
+import RechercheAccueil from '../islands/RechercheAccueil';
+import { LivreDetaille } from '../kit/Logo';
+import { IconeAtlas, IconeCoffreFort, IconeDermoscopie, IconePathologies } from '../kit/icones';
+import { IconeLupus } from '../kit/Lupus';
+import { listePathologies } from '../lib/site';
+
+const elements = await listePathologies();
+const MODULES_ACCUEIL = [
+  { id: 'pathologies', titre: 'Pathologies', texte: 'Des fiches synthétiques, de la clinique au traitement.', href: '/pathologies' },
+  { id: 'atlas', titre: 'Atlas photo', texte: 'Les photos cliniques, classées par pathologie.', href: '/atlas' },
+  { id: 'lupus', titre: "Lupus, l'assistant", texte: "L'assistant qui répond à vos questions cliniques, sources à l'appui.", href: '/lupus' },
+  { id: 'dermoscopie', titre: 'Dermoscopie', texte: 'Les images dermoscopiques et les critères pour les analyser.', href: '/dermoscopie' },
+  { id: 'coffre-fort', titre: 'Coffre-fort', texte: "Votre code d'accès débloque les photos réservées.", href: '/coffre-fort' },
+];
+---
+<Page titre="Accueil" accueil>
+  <div class="aod-accueil">
+    <div class="aod-accueil__haut">
+      <h1 class="aod-hero" style="margin:0;font-weight:400">
+        <LivreDetaille largeur={200} anime />
+        <span class="aod-hero__nom aod-nom-anime">Atlas <em>ouvert</em></span>
+        <span class="aod-hero__sous-titre aod-sous-titre-anime">de dermatologie</span>
+      </h1>
+      <p class="aod-chapo aod-apres-logo" style="animation-delay:2s">
+        Fiches de pathologies, atlas photo et dermoscopie, pour les internes et les praticiens.
+      </p>
+      <div class="aod-apres-logo" style="animation-delay:2.1s;width:100%;display:flex;justify-content:center">
+        <RechercheAccueil client:load elements={elements} />
+      </div>
+    </div>
+
+    <section class="aod-accueil__explorer aod-apres-logo" style="animation-delay:2.25s" aria-labelledby="explorer">
+      <h2 id="explorer" class="aod-titre-3" style="margin:0">Explorer</h2>
+      <div class="aod-grille-modules">
+        {MODULES_ACCUEIL.map((m) => (
+          <a class="aod-carte aod-carte--lien" href={m.href}>
+            <span class="aod-tuile">
+              {m.id === 'pathologies' && <IconePathologies />}
+              {m.id === 'atlas' && <IconeAtlas />}
+              {m.id === 'lupus' && <IconeLupus taille={26} />}
+              {m.id === 'dermoscopie' && <IconeDermoscopie />}
+              {m.id === 'coffre-fort' && <IconeCoffreFort />}
+            </span>
+            <span class="aod-carte__titre">{m.titre}</span>
+            <p class="aod-carte__texte">{m.texte}</p>
+          </a>
+        ))}
+      </div>
+    </section>
+  </div>
+</Page>

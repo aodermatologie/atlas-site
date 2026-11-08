@@ -1,0 +1,27 @@
+# Photos de l'atlas et des fiches.
+# - fichier : nom du fichier source (sans extension) dans photos-sources/ ; le script npm run photos:preparer
+#   produit les versions web (480 et 1600 px, métadonnées EXIF supprimées).
+# - acces : libre (servie depuis le stockage public) ou verrouillee (stockage privé, visible avec le code du coffre-fort).
+# - Les photos dont la localisation est « Organes génitaux » sont floutées d'office (affichables d'un clic).
+# - origine : patient (par défaut) ou publication.
+#   · patient     → consentement : référence du formulaire signé par le patient (jamais son identité).
+#   · publication → publication.citation obligatoire (affichée sous la photo) ; doi et licence si connus.
+#                   La photo reste « verrouillee » (équipe médicale) : la construction refuse « libre »
+#                   tant qu'il n'y a pas publication.autorisation (accord écrit de l'éditeur) ou une licence CC BY.
+#
+# Modèle pour une figure de publication (copier, retirer les « # », remplir) :
+#
+# - id: pemphigus-bouche-01
+#   fichier: pemphigus-bouche-01
+#   pathologie: pemphigus
+#   localisation: Muqueuses
+#   lesions: [Érosion]
+#   legende: Érosions buccales.
+#   alt: Muqueuse buccale avec plusieurs érosions.
+#   acces: verrouillee
+#   origine: publication
+#   publication:
+#     citation: "Auteur A, Auteur B. Titre court. Revue. 2025;12:34-40."
+#     doi: 10.xxxx/xxxxx
+
+[]

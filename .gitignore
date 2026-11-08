@@ -1,0 +1,18 @@
+# Dépendances et constructions
+node_modules/
+dist/
+.astro/
+
+# Secrets : jamais dans Git
+.env
+.env.*
+!.env.example
+
+# Photos de patients : jamais dans Git, même floutées ou verrouillées.
+# Les originaux restent sur un support chiffré ; seules les versions web vont dans les buckets.
+photos-sources/
+stockage-local/
+public/medias/
+
+*.zip
+.DS_Store

@@ -1,0 +1,191 @@
+/* Atlas, ouvert de dermatologie — variables du design system.
+   Mode clair par défaut ; mode sombre selon la préférence du système,
+   ou forcé avec <html data-theme="dark"> / <html data-theme="light">.
+   Point de rupture mobile : 760 px (les variables CSS ne sont pas utilisables dans les media queries). */
+
+:root {
+  /* Typographie */
+  --aod-font-titre: 'Fraunces Variable', 'Fraunces', Georgia, serif;
+  --aod-font-texte: 'Inter Variable', 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --aod-t-titre-1: 40px;
+  --aod-t-titre-1-mobile: 32px;
+  --aod-t-titre-2: 28px;
+  --aod-t-titre-2-mobile: 24px;
+  --aod-t-titre-3: 22px;
+  --aod-t-chapo: 18px;
+  --aod-t-corps: 17px;
+  --aod-t-corps-mobile: 16px;
+  --aod-t-ui: 15px;
+  --aod-t-legende: 13px;
+  --aod-t-etiquette: 12px;
+  /* Rayons : échelle 6 / 10 / 16, 12 pour les cadres photo et les menus, 20 pour la barre du bas */
+  --aod-r-s: 6px;
+  --aod-r-m: 10px;
+  --aod-r-photo: 12px;
+  --aod-r-l: 16px;
+  --aod-r-barre: 20px;
+  --aod-r-pilule: 999px;
+  /* Espacements : pas de 4 px */
+  --aod-e-1: 4px;
+  --aod-e-2: 8px;
+  --aod-e-3: 12px;
+  --aod-e-4: 16px;
+  --aod-e-5: 20px;
+  --aod-e-6: 24px;
+  --aod-e-8: 32px;
+  --aod-e-10: 40px;
+  --aod-e-12: 48px;
+  --aod-e-16: 64px;
+  /* Tailles */
+  --aod-cible: 44px;
+  --aod-h-bouton: 48px;
+  --aod-h-bouton-compact: 44px;
+  --aod-h-champ: 44px;
+  --aod-h-recherche: 56px;
+  --aod-h-pastille: 40px;
+  --aod-carte-padding: 20px;
+  --aod-carte-padding-mobile: 14px;
+  --aod-largeur-max: 1200px;
+  --aod-colonne-lecture: 680px;
+  /* Mouvement */
+  --aod-ease: cubic-bezier(.2, .8, .2, 1);
+  --aod-duree-courte: .15s;
+  --aod-duree: .25s;
+}
+
+:root {
+  --aod-fond: #FAF7F2; /* Fond de page */
+  --aod-surface: #FFFDFA; /* Cartes, menus, barre du bas (« Lecture ») */
+  --aod-papier: #F5EFE6; /* Champs posés dans une carte */
+  --aod-champ-page: #FFFDFA; /* Champs posés directement sur le fond de page */
+  --aod-survol: #F5EFE6; /* Survol des lignes de menu */
+  --aod-surface-beige: #ECE4D8; /* Bulles de question, bouton inactif, séparateurs doux */
+  --aod-bordure: #DDD2C4; /* Bordures des cartes et des champs */
+  --aod-separateur: #ECE4D8; /* Séparateurs dans les listes */
+  --aod-texte: #2A211C; /* Titres et texte courant */
+  --aod-texte-2: #5A4D45; /* Chapôs, descriptions */
+  --aod-texte-3: #6B5E55; /* Légendes, compteurs, étiquettes */
+  --aod-inactif: #8A7C70; /* Icônes et textes inactifs */
+  --aod-case-bordure: #A99C90; /* Bordure des cases à cocher */
+  --aod-action: #1F5F66; /* Liens, bouton principal, focus */
+  --aod-action-survol: #164A50; /* Bouton principal survolé */
+  --aod-sur-action: #FFFDFA; /* Texte posé sur la couleur d’action */
+  --aod-action-clair: #E6F0F0; /* Module actif, tuiles d’icône, pastilles */
+  --aod-action-clair-bordure: #BFD6D7; /* Bordure des pastilles */
+  --aod-alerte: #B91C1C; /* Signe d’alerte, erreurs */
+  --aod-sur-alerte: #FFFDFA; /* Texte du bandeau Signe d’alerte */
+  --aod-precaution: #8A5A00; /* Précaution */
+  --aod-retenir: #1F5F66; /* À retenir, réussite */
+  --aod-accent: #8F3445; /* « ouvert » du nom */
+  --aod-photo-cadre: #EAEAE8; /* Cadre gris neutre des photos */
+  --aod-photo-verrou: #DCDCD9; /* Fond d’une photo verrouillée */
+  --aod-photo-verrou-bordure: #A3A3A0; /* Bordure pointillée d’une photo verrouillée */
+  --aod-photo-legende: #3D3D3B; /* Légende sous une photo */
+  --aod-visionneuse: #1C1C1C; /* Fond de la visionneuse (identique dans les deux modes) */
+  --aod-visionneuse-panneau: #2A211C; /* Panneau d’informations de la visionneuse */
+  --aod-loup-n1: #8A7C70; /* Loup neutre (navigation inactive) : silhouette */
+  --aod-loup-n2: #5A4D45; /* Loup neutre : oreilles */
+  --aod-loup-n3: #B0A397; /* Loup neutre : reflets */
+  --aod-loup-n4: #CDC3B7; /* Loup neutre : museau */
+  --aod-loup-n5: #2A211C; /* Loup neutre : yeux et truffe */
+  --aod-logo-cornee: #F1B2A8; /* Logo : couche cornée */
+  --aod-logo-epiderme: #8F3445; /* Logo : épiderme */
+  --aod-logo-derme: #E9A66B; /* Logo : derme */
+  --aod-logo-hypoderme: #EFC9A0; /* Logo : hypoderme */
+  --aod-ombre-1: 0 1px 2px rgba(42,33,28,.06), 0 4px 12px rgba(42,33,28,.06); /* Survol des cartes, barre du bas */
+  --aod-ombre-2: 0 12px 32px rgba(42,33,28,.14), 0 2px 6px rgba(42,33,28,.06); /* Menus, suggestions */
+  --aod-voile: rgba(42,33,28,.45); /* Fond derrière le volet mobile */
+  color-scheme: light;
+}
+
+:root[data-theme="dark"] {
+  --aod-fond: #1F1915; /* Fond de page */
+  --aod-surface: #2A211C; /* Cartes, menus, barre du bas (« Lecture ») */
+  --aod-papier: #1F1915; /* Champs posés dans une carte */
+  --aod-champ-page: #2A211C; /* Champs posés directement sur le fond de page */
+  --aod-survol: #3A2F29; /* Survol des lignes de menu */
+  --aod-surface-beige: #3A2F29; /* Bulles de question, bouton inactif, séparateurs doux */
+  --aod-bordure: #4A3E37; /* Bordures des cartes et des champs */
+  --aod-separateur: #3A2F29; /* Séparateurs dans les listes */
+  --aod-texte: #F5EFE6; /* Titres et texte courant */
+  --aod-texte-2: #CBBFB2; /* Chapôs, descriptions */
+  --aod-texte-3: #A99C90; /* Légendes, compteurs, étiquettes */
+  --aod-inactif: #8A7C70; /* Icônes et textes inactifs */
+  --aod-case-bordure: #7D7066; /* Bordure des cases à cocher */
+  --aod-action: #6FB7BC; /* Liens, bouton principal, focus */
+  --aod-action-survol: #8FCACE; /* Bouton principal survolé */
+  --aod-sur-action: #1F1915; /* Texte posé sur la couleur d’action */
+  --aod-action-clair: #1E3A3D; /* Module actif, tuiles d’icône, pastilles */
+  --aod-action-clair-bordure: #2F5559; /* Bordure des pastilles */
+  --aod-alerte: #F06A6A; /* Signe d’alerte, erreurs */
+  --aod-sur-alerte: #1F1915; /* Texte du bandeau Signe d’alerte */
+  --aod-precaution: #E0A84A; /* Précaution */
+  --aod-retenir: #6FB7BC; /* À retenir, réussite */
+  --aod-accent: #EC8E9C; /* « ouvert » du nom */
+  --aod-photo-cadre: #2E2E2C; /* Cadre gris neutre des photos */
+  --aod-photo-verrou: #3A3A38; /* Fond d’une photo verrouillée */
+  --aod-photo-verrou-bordure: #6E6E6B; /* Bordure pointillée d’une photo verrouillée */
+  --aod-photo-legende: #C8C8C4; /* Légende sous une photo */
+  --aod-visionneuse: #1C1C1C; /* Fond de la visionneuse (identique dans les deux modes) */
+  --aod-visionneuse-panneau: #2A211C; /* Panneau d’informations de la visionneuse */
+  --aod-loup-n1: #A99C90; /* Loup neutre (navigation inactive) : silhouette */
+  --aod-loup-n2: #7D7066; /* Loup neutre : oreilles */
+  --aod-loup-n3: #CBBFB2; /* Loup neutre : reflets */
+  --aod-loup-n4: #E0D6CA; /* Loup neutre : museau */
+  --aod-loup-n5: #1F1915; /* Loup neutre : yeux et truffe */
+  --aod-logo-cornee: #F7D3CC; /* Logo : couche cornée */
+  --aod-logo-epiderme: #EC8E9C; /* Logo : épiderme */
+  --aod-logo-derme: #D08A50; /* Logo : derme */
+  --aod-logo-hypoderme: #A7805C; /* Logo : hypoderme */
+  --aod-ombre-1: 0 1px 2px rgba(0,0,0,.14), 0 4px 12px rgba(0,0,0,.14); /* Survol des cartes, barre du bas */
+  --aod-ombre-2: 0 12px 32px rgba(0,0,0,.34), 0 2px 6px rgba(0,0,0,.14); /* Menus, suggestions */
+  --aod-voile: rgba(0,0,0,.6); /* Fond derrière le volet mobile */
+  color-scheme: dark;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --aod-fond: #1F1915; /* Fond de page */
+    --aod-surface: #2A211C; /* Cartes, menus, barre du bas (« Lecture ») */
+    --aod-papier: #1F1915; /* Champs posés dans une carte */
+    --aod-champ-page: #2A211C; /* Champs posés directement sur le fond de page */
+    --aod-survol: #3A2F29; /* Survol des lignes de menu */
+    --aod-surface-beige: #3A2F29; /* Bulles de question, bouton inactif, séparateurs doux */
+    --aod-bordure: #4A3E37; /* Bordures des cartes et des champs */
+    --aod-separateur: #3A2F29; /* Séparateurs dans les listes */
+    --aod-texte: #F5EFE6; /* Titres et texte courant */
+    --aod-texte-2: #CBBFB2; /* Chapôs, descriptions */
+    --aod-texte-3: #A99C90; /* Légendes, compteurs, étiquettes */
+    --aod-inactif: #8A7C70; /* Icônes et textes inactifs */
+    --aod-case-bordure: #7D7066; /* Bordure des cases à cocher */
+    --aod-action: #6FB7BC; /* Liens, bouton principal, focus */
+    --aod-action-survol: #8FCACE; /* Bouton principal survolé */
+    --aod-sur-action: #1F1915; /* Texte posé sur la couleur d’action */
+    --aod-action-clair: #1E3A3D; /* Module actif, tuiles d’icône, pastilles */
+    --aod-action-clair-bordure: #2F5559; /* Bordure des pastilles */
+    --aod-alerte: #F06A6A; /* Signe d’alerte, erreurs */
+    --aod-sur-alerte: #1F1915; /* Texte du bandeau Signe d’alerte */
+    --aod-precaution: #E0A84A; /* Précaution */
+    --aod-retenir: #6FB7BC; /* À retenir, réussite */
+    --aod-accent: #EC8E9C; /* « ouvert » du nom */
+    --aod-photo-cadre: #2E2E2C; /* Cadre gris neutre des photos */
+    --aod-photo-verrou: #3A3A38; /* Fond d’une photo verrouillée */
+    --aod-photo-verrou-bordure: #6E6E6B; /* Bordure pointillée d’une photo verrouillée */
+    --aod-photo-legende: #C8C8C4; /* Légende sous une photo */
+    --aod-visionneuse: #1C1C1C; /* Fond de la visionneuse (identique dans les deux modes) */
+    --aod-visionneuse-panneau: #2A211C; /* Panneau d’informations de la visionneuse */
+    --aod-loup-n1: #A99C90; /* Loup neutre (navigation inactive) : silhouette */
+    --aod-loup-n2: #7D7066; /* Loup neutre : oreilles */
+    --aod-loup-n3: #CBBFB2; /* Loup neutre : reflets */
+    --aod-loup-n4: #E0D6CA; /* Loup neutre : museau */
+    --aod-loup-n5: #1F1915; /* Loup neutre : yeux et truffe */
+    --aod-logo-cornee: #F7D3CC; /* Logo : couche cornée */
+    --aod-logo-epiderme: #EC8E9C; /* Logo : épiderme */
+    --aod-logo-derme: #D08A50; /* Logo : derme */
+    --aod-logo-hypoderme: #A7805C; /* Logo : hypoderme */
+    --aod-ombre-1: 0 1px 2px rgba(0,0,0,.14), 0 4px 12px rgba(0,0,0,.14); /* Survol des cartes, barre du bas */
+    --aod-ombre-2: 0 12px 32px rgba(0,0,0,.34), 0 2px 6px rgba(0,0,0,.14); /* Menus, suggestions */
+    --aod-voile: rgba(0,0,0,.6); /* Fond derrière le volet mobile */
+    color-scheme: dark;
+  }
+}

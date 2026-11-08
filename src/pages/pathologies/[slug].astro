@@ -1,0 +1,111 @@
+---
+// Fiche d'une pathologie. Seules les fiches « brouillon » et « relue » ont une page.
+// Sections repliables fermées par défaut (<details>), « Tout déplier / Tout replier » en tête.
+// Les photos s'insèrent à l'endroit de la ligne « [[photos]] » de la fiche (en général dans « Clinique »),
+// sinon dans une section « Photos » en fin de fiche.
+import { getCollection } from 'astro:content';
+import Page from '../../layouts/Page.astro';
+import ListePathologies from '../../islands/ListePathologies';
+import PhotosFiche from '../../islands/PhotosFiche';
+import { Essentiel } from '../../kit/Contenus';
+import { FilAriane } from '../../kit/Navigation';
+import { estPubliee, listePathologies, photosAffichees } from '../../lib/site';
+
+export async function getStaticPaths() {
+  const fiches = await getCollection('fiches', estPubliee);
+  return fiches.map((fiche) => ({ params: { slug: fiche.id }, props: { fiche } }));
+}
+
+const { fiche } = Astro.props;
+const d = fiche.data;
+const elements = await listePathologies();
+const photos = await photosAffichees((p) => p.data.pathologie.id === fiche.id);
+
+// Le HTML de la fiche est coupé à l'emplacement des photos ; l'îlot interactif est inséré entre les deux morceaux.
+const nbPhotos = photos.length === 1 ? '1 photo' : `${photos.length} photos`;
+const html = (fiche.rendered?.html ?? '').replace(/<span data-aod-nb-photos=""><\/span>/g, photos.length ? ` · ${nbPhotos}` : '');
+const [avant, ...reste] = html.split(/<div data-aod-photos=""><\/div>/);
+const apres = reste.join('');
+const photosDansLeTexte = reste.length > 0;
+const dateLongue = (x: Date) => new Intl.DateTimeFormat('fr-FR', { dateStyle: 'long', timeZone: 'UTC' }).format(x);
+---
+<Page titre={d.titre} description={d.chapo || undefined} actif="pathologies">
+  <div class="aod-deux-colonnes">
+    <aside class="aod-colonne-laterale aod-colonne-laterale--fiche" aria-label="Toutes les pathologies">
+      <ListePathologies client:load elements={elements} courant={fiche.id} />
+    </aside>
+
+    <article class="aod-colonne-principale">
+      <FilAriane niveaux={[{ libelle: 'Pathologies', href: '/pathologies' }, { libelle: d.titre }]} />
+      <header style="display:flex;flex-direction:column;gap:12px">
+        {d.statut === 'brouillon' && <span class="aod-badge">En relecture</span>}
+        <h1 class="aod-titre-1" style="margin:0">{d.titre}</h1>
+        {d.chapo && <p class="aod-chapo">{d.chapo}</p>}
+        <div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px">
+          {d.misAJour ? <span class="aod-compteur">Mise à jour : {dateLongue(d.misAJour)}</span> : <span />}
+          <div class="aod-actions-fiche">
+            <button type="button" class="aod-btn aod-btn--discret aod-btn--compact" data-tout="ouvrir">Tout déplier</button>
+            <button type="button" class="aod-btn aod-btn--discret aod-btn--compact" data-tout="fermer">Tout replier</button>
+          </div>
+        </div>
+      </header>
+
+      {d.essentiel.length > 0 && <Essentiel points={d.essentiel} />}
+
+      <div class="aod-fiche">
+        <Fragment set:html={avant} />
+        {photosDansLeTexte && photos.length > 0 && <div class="aod-photos-dans-texte"><PhotosFiche client:idle photos={photos} /></div>}
+        <Fragment set:html={apres} />
+
+        {!photosDansLeTexte && photos.length > 0 && (
+          <details class="aod-section">
+            <summary class="aod-section__bouton">
+              <span class="aod-section__textes">
+                <h2 class="aod-section__titre">Photos</h2>
+                <span class="aod-section__sous-titre">{nbPhotos}</span>
+              </span>
+              <svg class="aod-section__chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6" /></svg>
+            </summary>
+            <div class="aod-section__contenu">
+              <PhotosFiche client:idle photos={photos} />
+            </div>
+          </details>
+        )}
+
+        {(d.sources.length > 0 || d.relecture) && (
+          <details class="aod-section">
+            <summary class="aod-section__bouton">
+              <span class="aod-section__textes">
+                <h2 class="aod-section__titre">Sources</h2>
+                {d.relecture && <span class="aod-section__sous-titre">Relue par {d.relecture.par} le {dateLongue(d.relecture.le)}</span>}
+              </span>
+              <svg class="aod-section__chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6" /></svg>
+            </summary>
+            <div class="aod-section__contenu">
+              <ol class="aod-sources-fiche">
+                {d.sources.map((s) => (
+                  <li>
+                    {s.url ? <a href={s.url} rel="noopener" target="_blank">{s.titre}</a> : <span>{s.titre}</span>}
+                    <small>{s.organisme}{s.annee ? `, ${s.annee}` : ''}</small>
+                  </li>
+                ))}
+              </ol>
+            </div>
+          </details>
+        )}
+      </div>
+    </article>
+  </div>
+</Page>
+
+<script>
+  document.querySelectorAll<HTMLButtonElement>('[data-tout]').forEach((bouton) =>
+    bouton.addEventListener('click', () => {
+      const ouvrir = bouton.dataset.tout === 'ouvrir';
+      document.querySelectorAll<HTMLDetailsElement>('.aod-fiche details.aod-section').forEach((d) => { d.open = ouvrir; });
+    }),
+  );
+  // Lien direct vers une section (#clinique…) : on l'ouvre.
+  const cible = location.hash ? document.getElementById(decodeURIComponent(location.hash.slice(1))) : null;
+  cible?.closest('details')?.setAttribute('open', '');
+</script>

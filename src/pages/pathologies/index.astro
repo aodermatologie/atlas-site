@@ -1,0 +1,46 @@
+---
+// Sommaire des pathologies : recherche + liste à gauche, familles à droite.
+// Les fiches « à rédiger » apparaissent grisées, sans lien.
+import Page from '../../layouts/Page.astro';
+import ListePathologies from '../../islands/ListePathologies';
+import { famillesOrdonnees, listePathologies } from '../../lib/site';
+
+const elements = await listePathologies();
+const familles = famillesOrdonnees()
+  .map((f) => ({ ...f, fiches: elements.filter((e) => e.famille === f.id) }))
+  .filter((f) => f.fiches.length > 0);
+const publiees = elements.filter((e) => e.href).length;
+---
+<Page titre="Pathologies" actif="pathologies" description="Toutes les fiches de pathologies d'Atlas, classées par famille.">
+  <div class="aod-deux-colonnes">
+    <aside class="aod-colonne-laterale" aria-label="Rechercher une pathologie">
+      <ListePathologies client:load elements={elements} />
+    </aside>
+    <div class="aod-colonne-principale" style="max-width:none">
+      <header style="display:flex;flex-direction:column;gap:12px">
+        <h1 class="aod-titre-1" style="margin:0">Pathologies</h1>
+        <p class="aod-chapo">
+          {publiees === 1 ? '1 fiche publiée' : `${publiees} fiches publiées`} sur {elements.length}, classées par famille. Les autres sont en cours de rédaction.
+        </p>
+      </header>
+      <div class="aod-familles">
+        {familles.map((f) => (
+          <section aria-labelledby={`famille-${f.id}`} style="display:flex;flex-direction:column;gap:12px">
+            <h2 id={`famille-${f.id}`} class="aod-titre-3" style="margin:0">{f.titre}</h2>
+            <ul class="aod-famille__grille">
+              {f.fiches.map((e) => (
+                <li>
+                  {e.href ? (
+                    <a class="aod-famille__lien" href={e.href}>{e.titre}</a>
+                  ) : (
+                    <span class="aod-famille__lien aod-famille__lien--a-venir">{e.titre}<small>à venir</small></span>
+                  )}
+                </li>
+              ))}
+            </ul>
+          </section>
+        ))}
+      </div>
+    </div>
+  </div>
+</Page>

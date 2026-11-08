@@ -1,0 +1,73 @@
+/* Atlas, ouvert de dermatologie — base.
+   À charger après tokens.css. Polices : voir le README (Fraunces et Inter, Google Fonts). */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--aod-fond);
+  color: var(--aod-texte);
+  font-family: var(--aod-font-texte);
+  font-size: var(--aod-t-corps);
+  line-height: 1.6;
+}
+
+a { color: var(--aod-action); text-underline-offset: 2px; }
+a:hover { color: var(--aod-action-survol); }
+
+/* Focus : anneau sarcelle 2 px, décalé de 2 px — jamais supprimé */
+:focus-visible { outline: 2px solid var(--aod-action); outline-offset: 2px; }
+
+button, input, textarea, select { font: inherit; color: inherit; }
+
+/* Échelle typographique */
+.aod-titre-1, .aod-titre-2, .aod-titre-3 {
+  margin: 0;
+  font-family: var(--aod-font-titre);
+  font-weight: 500;
+  font-variation-settings: 'opsz' 144;
+}
+.aod-titre-1 { font-size: var(--aod-t-titre-1); line-height: 1.1; letter-spacing: -0.02em; }
+.aod-titre-2 { font-size: var(--aod-t-titre-2); line-height: 1.2; }
+.aod-titre-3 { font-size: var(--aod-t-titre-3); line-height: 1.3; }
+.aod-chapo { margin: 0; font-size: var(--aod-t-chapo); line-height: 1.55; color: var(--aod-texte-2); }
+.aod-ui { font-size: var(--aod-t-ui); line-height: 1.4; }
+.aod-legende { font-size: var(--aod-t-legende); line-height: 1.45; color: var(--aod-texte-3); }
+.aod-etiquette {
+  font-size: var(--aod-t-etiquette);
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--aod-texte-3);
+}
+
+/* Texte réservé aux lecteurs d'écran */
+.aod-sr-only {
+  position: absolute; width: 1px; height: 1px; overflow: hidden;
+  clip: rect(0 0 0 0); white-space: nowrap;
+}
+
+.aod-page {
+  width: 100%;
+  max-width: calc(var(--aod-largeur-max) + 2 * var(--aod-e-8));
+  margin: 0 auto;
+  padding: var(--aod-e-8);
+}
+
+@media (max-width: 760px) {
+  body { font-size: var(--aod-t-corps-mobile); }
+  .aod-titre-1 { font-size: var(--aod-t-titre-1-mobile); }
+  .aod-titre-2 { font-size: var(--aod-t-titre-2-mobile); }
+  .aod-page { padding: var(--aod-e-5) var(--aod-e-4) 120px; } /* 120 px : place pour la barre du bas */
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

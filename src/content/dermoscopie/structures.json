@@ -1,0 +1,261 @@
+[
+  {
+    "id": "pig--reseau-pigmente-typique",
+    "nom": "Réseau pigmenté typique",
+    "definition": "Lignes brunes fines et régulières, mailles homogènes qui s'estompent en périphérie.",
+    "evoque": "Nævus",
+    "illustration": "pig--reseau-pigmente-typique.svg"
+  },
+  {
+    "id": "pig--reseau-pigmente-atypique",
+    "nom": "Réseau pigmenté atypique",
+    "definition": "Lignes épaisses ou de teinte inégale, mailles irrégulières, arrêt brutal en bordure.",
+    "evoque": "Mélanome",
+    "illustration": "pig--reseau-pigmente-atypique.svg"
+  },
+  {
+    "id": "pig--points-et-globules",
+    "nom": "Points et globules",
+    "definition": "Points (moins de 0,1 mm) et globules (plus de 0,1 mm), ronds à ovales, bruns à noirs.",
+    "evoque": "Réguliers : nævus · Irréguliers : mélanome",
+    "illustration": "pig--points-et-globules.svg"
+  },
+  {
+    "id": "pig--stries-et-pseudopodes",
+    "nom": "Stries et pseudopodes",
+    "definition": "Projections linéaires en périphérie, parfois terminées par un renflement.",
+    "evoque": "Symétriques : nævus de Spitz ou de Reed · Focales : mélanome",
+    "illustration": "pig--stries-et-pseudopodes.svg"
+  },
+  {
+    "id": "pig--voile-bleu-blanc",
+    "nom": "Voile bleu-blanc",
+    "definition": "Pigmentation bleue confluente, irrégulière, surmontée d'un voile blanchâtre dépoli.",
+    "evoque": "Mélanome",
+    "illustration": "pig--voile-bleu-blanc.svg"
+  },
+  {
+    "id": "pig--structures-de-regression",
+    "nom": "Structures de régression",
+    "definition": "Zones blanches d'allure cicatricielle et fines granulations bleu-gris.",
+    "evoque": "Mélanome, kératose lichénoïde",
+    "illustration": "pig--structures-de-regression.svg"
+  },
+  {
+    "id": "pig--taches-pigmentees",
+    "nom": "Taches pigmentées",
+    "definition": "Zone brun foncé à noire, homogène, où aucune autre structure n'est visible.",
+    "evoque": "Centrale : nævus · Excentrée, irrégulière : mélanome",
+    "illustration": "pig--taches-pigmentees.svg"
+  },
+  {
+    "id": "pig--kystes-grains-de-milium",
+    "nom": "Kystes grains de milium",
+    "definition": "Petits points blanc-jaunâtre, brillants.",
+    "evoque": "Kératose séborrhéique",
+    "illustration": "pig--kystes-grains-de-milium.svg"
+  },
+  {
+    "id": "pig--pseudo-comedons",
+    "nom": "Pseudo-comédons",
+    "definition": "Bouchons kératosiques ronds, brun foncé à noirs.",
+    "evoque": "Kératose séborrhéique",
+    "illustration": "pig--pseudo-comedons.svg"
+  },
+  {
+    "id": "pig--nids-ovoides-et-feuilles-d-erable",
+    "nom": "Nids ovoïdes et feuilles d'érable",
+    "definition": "Nids ovoïdes bleu-gris et projections en feuille d'érable, sans réseau pigmenté.",
+    "evoque": "Carcinome basocellulaire pigmenté",
+    "illustration": "pig--nids-ovoides-et-feuilles-d-erable.svg"
+  },
+  {
+    "id": "nonpig--vaisseaux-arborescents",
+    "nom": "Vaisseaux arborescents",
+    "definition": "Vaisseaux de gros calibre, nets, qui se ramifient comme des branches.",
+    "evoque": "Carcinome basocellulaire",
+    "illustration": "nonpig--vaisseaux-arborescents.svg"
+  },
+  {
+    "id": "nonpig--vaisseaux-glomerulaires",
+    "nom": "Vaisseaux glomérulaires",
+    "definition": "Vaisseaux tortueux en pelotons, souvent regroupés en amas.",
+    "evoque": "Maladie de Bowen",
+    "illustration": "nonpig--vaisseaux-glomerulaires.svg"
+  },
+  {
+    "id": "nonpig--vaisseaux-en-epingle-a-cheveux",
+    "nom": "Vaisseaux en épingle à cheveux",
+    "definition": "Boucles vasculaires allongées, parfois entourées d'un halo blanc.",
+    "evoque": "Kératose séborrhéique · Avec halo blanc : kératoacanthome, carcinome épidermoïde",
+    "illustration": "nonpig--vaisseaux-en-epingle-a-cheveux.svg"
+  },
+  {
+    "id": "nonpig--vaisseaux-polymorphes",
+    "nom": "Vaisseaux polymorphes",
+    "definition": "Association de vaisseaux punctiformes et linéaires irréguliers, sur fond rose.",
+    "evoque": "Mélanome achromique",
+    "illustration": "nonpig--vaisseaux-polymorphes.svg"
+  },
+  {
+    "id": "nonpig--lacunes-rouge-bleu",
+    "nom": "Lacunes rouge-bleu",
+    "definition": "Zones arrondies rouges à bleu sombre, bien limitées, séparées par des cloisons.",
+    "evoque": "Angiome, angiokératome",
+    "illustration": "nonpig--lacunes-rouge-bleu.svg"
+  },
+  {
+    "id": "nonpig--structures-blanches-brillantes",
+    "nom": "Structures blanches brillantes",
+    "definition": "Courtes lignes blanches brillantes, parallèles ou perpendiculaires, visibles en lumière polarisée.",
+    "evoque": "Carcinome basocellulaire, mélanome, dermatofibrome",
+    "illustration": "nonpig--structures-blanches-brillantes.svg"
+  },
+  {
+    "id": "acral--aspect-parallele-des-sillons",
+    "nom": "Aspect parallèle des sillons",
+    "definition": "Pigment le long des sillons cutanés, en lignes fines et parallèles.",
+    "evoque": "Nævus acral",
+    "illustration": "acral--aspect-parallele-des-sillons.svg"
+  },
+  {
+    "id": "acral--aspect-en-treillis",
+    "nom": "Aspect en treillis",
+    "definition": "Lignes pigmentées le long des sillons, reliées par des lignes perpendiculaires.",
+    "evoque": "Nævus acral",
+    "illustration": "acral--aspect-en-treillis.svg"
+  },
+  {
+    "id": "acral--aspect-parallele-des-cretes",
+    "nom": "Aspect parallèle des crêtes",
+    "definition": "Pigment en bandes larges sur les crêtes ; les pores sudoraux restent visibles dans la bande.",
+    "evoque": "Mélanome acral",
+    "illustration": "acral--aspect-parallele-des-cretes.svg"
+  },
+  {
+    "id": "acral--pseudo-reseau",
+    "nom": "Pseudo-réseau",
+    "definition": "Pigmentation interrompue par des orifices folliculaires régulièrement espacés.",
+    "evoque": "Lentigo solaire, kératose séborrhéique plane",
+    "illustration": "acral--pseudo-reseau.svg"
+  },
+  {
+    "id": "acral--pigmentation-asymetrique-des-orifices",
+    "nom": "Pigmentation asymétrique des orifices",
+    "definition": "Pigment gris-brun entourant les orifices folliculaires de façon asymétrique, puis structures rhomboïdales.",
+    "evoque": "Lentigo malin",
+    "illustration": "acral--pigmentation-asymetrique-des-orifices.svg"
+  },
+  {
+    "id": "cheveux--points-jaunes",
+    "nom": "Points jaunes",
+    "definition": "Points jaune-orangé arrondis, à l'emplacement des orifices folliculaires.",
+    "evoque": "Pelade ; aussi alopécie androgénétique",
+    "illustration": "cheveux--points-jaunes.svg"
+  },
+  {
+    "id": "cheveux--points-noirs",
+    "nom": "Points noirs",
+    "definition": "Points noirs dans les orifices folliculaires : cheveux cassés au ras de la peau.",
+    "evoque": "Pelade, teigne, trichotillomanie",
+    "illustration": "cheveux--points-noirs.svg"
+  },
+  {
+    "id": "cheveux--cheveux-en-point-d-exclamation",
+    "nom": "Cheveux en point d'exclamation",
+    "definition": "Cheveux courts, plus fins et plus clairs à la base qu'à l'extrémité.",
+    "evoque": "Pelade en phase active",
+    "illustration": "cheveux--cheveux-en-point-d-exclamation.svg"
+  },
+  {
+    "id": "cheveux--cheveux-en-virgule-et-en-tire-bouchon",
+    "nom": "Cheveux en virgule et en tire-bouchon",
+    "definition": "Cheveux courts, courbés en virgule ou enroulés en spirale.",
+    "evoque": "Teigne du cuir chevelu",
+    "illustration": "cheveux--cheveux-en-virgule-et-en-tire-bouchon.svg"
+  },
+  {
+    "id": "cheveux--anisotrichose",
+    "nom": "Anisotrichose",
+    "definition": "Diamètre des cheveux variable (plus de 20 %), avec des cheveux fins miniaturisés.",
+    "evoque": "Alopécie androgénétique",
+    "illustration": "cheveux--anisotrichose.svg"
+  },
+  {
+    "id": "ongles--bande-melanique-reguliere",
+    "nom": "Bande mélanique régulière",
+    "definition": "Lignes longitudinales parallèles, de couleur, d'épaisseur et d'espacement réguliers.",
+    "evoque": "Nævus de la matrice, activation mélanocytaire",
+    "illustration": "ongles--bande-melanique-reguliere.svg"
+  },
+  {
+    "id": "ongles--bande-melanique-irreguliere",
+    "nom": "Bande mélanique irrégulière",
+    "definition": "Lignes de couleur, d'épaisseur ou d'espacement irréguliers ; pigmentation du repli (signe de Hutchinson).",
+    "evoque": "Mélanome unguéal",
+    "illustration": "ongles--bande-melanique-irreguliere.svg"
+  },
+  {
+    "id": "ongles--hematome-sous-ungueal",
+    "nom": "Hématome sous-unguéal",
+    "definition": "Zone rouge-violacé à brun-noir, homogène, bordée de globules, au bord distal effiloché.",
+    "evoque": "Hématome, qui migre vers le bord libre",
+    "illustration": "ongles--hematome-sous-ungueal.svg"
+  },
+  {
+    "id": "ongles--onychomycose",
+    "nom": "Onychomycose",
+    "definition": "Bord proximal de l'onycholyse en pointes, stries longitudinales colorées en « aurore boréale ».",
+    "evoque": "Onychomycose",
+    "illustration": "ongles--onychomycose.svg"
+  },
+  {
+    "id": "ongles--psoriasis-ungueal",
+    "nom": "Psoriasis unguéal",
+    "definition": "Ponctuations en dé à coudre, tache saumonée (« tache d’huile ») et hémorragies en flammèches.",
+    "evoque": "Psoriasis",
+    "illustration": "ongles--psoriasis-ungueal.svg"
+  },
+  {
+    "id": "inflam--vaisseaux-punctiformes-et-squames-blanches",
+    "nom": "Vaisseaux punctiformes et squames blanches",
+    "definition": "Points rouges répartis de façon régulière sur fond rose, squames blanches diffuses.",
+    "evoque": "Psoriasis",
+    "illustration": "inflam--vaisseaux-punctiformes-et-squames-blanches.svg"
+  },
+  {
+    "id": "inflam--stries-de-wickham",
+    "nom": "Stries de Wickham",
+    "definition": "Réseau de lignes blanc nacré sur fond violacé.",
+    "evoque": "Lichen plan",
+    "illustration": "inflam--stries-de-wickham.svg"
+  },
+  {
+    "id": "inflam--vaisseaux-en-polygones",
+    "nom": "Vaisseaux en polygones",
+    "definition": "Vaisseaux linéaires dessinant des mailles polygonales, sur fond rouge.",
+    "evoque": "Rosacée",
+    "illustration": "inflam--vaisseaux-en-polygones.svg"
+  },
+  {
+    "id": "inflam--signe-du-deltaplane",
+    "nom": "Signe du deltaplane",
+    "definition": "Petite structure triangulaire brun foncé (l'acarien) au bout d'un sillon blanchâtre.",
+    "evoque": "Gale",
+    "illustration": "inflam--signe-du-deltaplane.svg"
+  },
+  {
+    "id": "inflam--lentes",
+    "nom": "Lentes",
+    "definition": "Coques ovoïdes brunes ou translucides, solidement fixées au cheveu.",
+    "evoque": "Pédiculose",
+    "illustration": "inflam--lentes.svg"
+  },
+  {
+    "id": "inflam--structures-polylobees-centrales",
+    "nom": "Structures polylobées centrales",
+    "definition": "Structures blanc-jaunâtre polylobées au centre, entourées d’une couronne de vaisseaux.",
+    "evoque": "Molluscum contagiosum",
+    "illustration": "inflam--structures-polylobees-centrales.svg"
+  }
+]

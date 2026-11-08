@@ -1,0 +1,14 @@
+---
+// Coffre-fort : un seul code débloque toutes les photos à accès restreint, jusqu'à la fermeture du navigateur.
+import Page from '../layouts/Page.astro';
+import CoffreFort from '../islands/CoffreFort';
+import { IconeCoffreFort } from '../kit/icones';
+---
+<Page titre="Coffre-fort" actif="coffre-fort" indexer={false}>
+  <div class="aod-coffre">
+    <span class="aod-coffre__tuile"><IconeCoffreFort taille={34} /></span>
+    <h1 class="aod-titre-1" style="margin:0">Coffre-fort</h1>
+    <p class="aod-chapo">Certaines photos des fiches et de l'atlas sont à accès restreint. Un seul code les débloque toutes.</p>
+    <CoffreFort client:load />
+  </div>
+</Page>

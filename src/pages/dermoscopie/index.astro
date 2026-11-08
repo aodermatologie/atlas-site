@@ -1,0 +1,29 @@
+---
+// Dermoscopie : menu des rubriques. Chaque rubrique rassemble les structures à reconnaître.
+import { getCollection } from 'astro:content';
+import Page from '../../layouts/Page.astro';
+import { IconeFleche } from '../../kit/icones';
+
+const rubriques = (await getCollection('rubriques')).sort((a, b) => a.data.ordre - b.data.ordre);
+const nombre = (r: (typeof rubriques)[number]) => r.data.sections.reduce((n, s) => n + s.structures.length, 0);
+---
+<Page titre="Dermoscopie" actif="dermoscopie" description="Les structures dermoscopiques à reconnaître, illustrées et expliquées, par rubrique.">
+  <div style="display:flex;flex-direction:column;gap:24px">
+    <header style="display:flex;flex-direction:column;gap:12px">
+      <h1 class="aod-titre-1" style="margin:0">Dermoscopie</h1>
+      <p class="aod-chapo">Choisissez une rubrique : chacune rassemble les structures à reconnaître, illustrées et expliquées.</p>
+    </header>
+    <div class="aod-grille-cartes">
+      {rubriques.map((r) => (
+        <a class="aod-carte aod-carte--lien aod-rubrique" href={`/dermoscopie/${r.id}`}>
+          <img src={`/illustrations/dermoscopie/${r.data.illustration}`} alt="" width="96" height="96" decoding="async" style="flex:0 0 96px" />
+          <span style="display:flex;flex-direction:column;gap:6px">
+            <span class="aod-carte__titre">{r.data.titre}</span>
+            <span class="aod-carte__texte">{r.data.description}</span>
+            <span class="aod-carte__suite">{nombre(r)} structures <IconeFleche taille={16} /></span>
+          </span>
+        </a>
+      ))}
+    </div>
+  </div>
+</Page>

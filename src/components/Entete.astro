@@ -1,0 +1,35 @@
+---
+// En-tête ordinateur : logo + « Atlas ouvert de dermatologie » à gauche, sections à droite, puis jour/nuit.
+// Sous 760 px : « Atlas » seul, sections masquées (la barre du bas prend le relais). Sur l'accueil : sans logo.
+import { IconeAtlas, IconeCoffreFort, IconeDermoscopie, IconeLune, IconePathologies, IconeSoleil } from '../kit/icones';
+import { IconeLupus } from '../kit/Lupus';
+import { LivreCompact } from '../kit/Logo';
+import { MODULES, type IdModule } from '../lib/site';
+
+interface Props { actif?: IdModule; avecLogo?: boolean }
+const { actif, avecLogo = true } = Astro.props;
+---
+<header class="aod-entete">
+  {avecLogo && (
+    <a href="/" class="aod-entete__marque" aria-label="Atlas ouvert de dermatologie, retour à l'accueil">
+      <LivreCompact largeur={42} />
+      <span class="aod-entete__nom">Atlas<span class="aod-entete__long"> <em>ouvert</em> de dermatologie</span></span>
+    </a>
+  )}
+  <nav class="aod-entete__nav" aria-label="Modules">
+    {MODULES.map((m) => (
+      <a href={m.href} class:list={['aod-nav-lien', { 'aod-nav-lien--lupus': m.id === 'lupus' }]} aria-current={m.id === actif ? 'page' : undefined}>
+        {m.id === 'pathologies' && <IconePathologies taille={18} />}
+        {m.id === 'atlas' && <IconeAtlas taille={18} />}
+        {m.id === 'lupus' && <IconeLupus taille={18} variante={actif === 'lupus' ? 'sarcelle' : 'neutre'} />}
+        {m.id === 'dermoscopie' && <IconeDermoscopie taille={18} />}
+        {m.id === 'coffre-fort' && <IconeCoffreFort taille={18} />}
+        {m.libelle}
+      </a>
+    ))}
+  </nav>
+  <button type="button" class="aod-icon-btn aod-entete__theme" data-theme-bouton aria-label="Passer en mode sombre">
+    <span class="aod-theme__lune"><IconeLune /></span>
+    <span class="aod-theme__soleil"><IconeSoleil /></span>
+  </button>
+</header>

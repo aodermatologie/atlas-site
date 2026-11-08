@@ -1,0 +1,85 @@
+---
+// Gabarit commun : polices auto-hébergées, thème, en-tête, pied de page, barre du bas.
+import '@fontsource-variable/fraunces/opsz.css';
+import '@fontsource-variable/fraunces/opsz-italic.css';
+import '@fontsource-variable/inter/wght.css';
+import '../styles/tokens.css';
+import '../styles/base.css';
+import '../styles/components.css';
+import '../styles/site.css';
+import Entete from '../components/Entete.astro';
+import BarreDuBas from '../components/BarreDuBas.astro';
+import PiedDePage from '../components/PiedDePage.astro';
+import type { IdModule } from '../lib/site';
+
+interface Props {
+  titre: string;
+  description?: string;
+  actif?: IdModule;
+  accueil?: boolean;
+  indexer?: boolean;
+}
+const {
+  titre,
+  description = 'Atlas, ouvert de dermatologie : fiches de pathologies, atlas photo et dermoscopie, pour les internes et les praticiens.',
+  actif,
+  accueil = false,
+  indexer = true,
+} = Astro.props;
+const titreComplet = accueil ? 'Atlas, ouvert de dermatologie' : `${titre} · Atlas, ouvert de dermatologie`;
+const canonique = new URL(Astro.url.pathname, Astro.site);
+---
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script is:inline>try{var t=localStorage.getItem('aod-theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+    {accueil && <script is:inline>try{if(sessionStorage.getItem('aod-arrivee-jouee'))document.documentElement.classList.add('aod-sans-animation');else sessionStorage.setItem('aod-arrivee-jouee','1')}catch(e){}</script>}
+    <title>{titreComplet}</title>
+    <meta name="description" content={description} />
+    {!indexer && <meta name="robots" content="noindex" />}
+    <link rel="canonical" href={canonique} />
+    <link rel="icon" href="/favicon.ico" sizes="48x48" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta name="theme-color" content="#FAF7F2" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#1F1915" media="(prefers-color-scheme: dark)" />
+    <meta property="og:title" content={titreComplet} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="fr_FR" />
+  </head>
+  <body>
+    <a class="aod-lien-evitement" href="#contenu">Aller au contenu</a>
+    <Entete actif={actif} avecLogo={!accueil} />
+    <main id="contenu" class="aod-page">
+      <slot />
+    </main>
+    <PiedDePage />
+    <BarreDuBas actif={actif} />
+    <script>
+      // Bouton jour/nuit : force un mode et le mémorise dans ce navigateur.
+      const racine = document.documentElement;
+      const sombreActuel = () =>
+        racine.dataset.theme ? racine.dataset.theme === 'dark' : window.matchMedia('(prefers-color-scheme: dark)').matches;
+      const etiqueter = () => {
+        document.querySelectorAll<HTMLButtonElement>('[data-theme-bouton]').forEach((b) => {
+          const l = sombreActuel() ? 'Passer en mode clair' : 'Passer en mode sombre';
+          b.setAttribute('aria-label', l);
+          b.title = l;
+        });
+      };
+      document.querySelectorAll('[data-theme-bouton]').forEach((b) =>
+        b.addEventListener('click', () => {
+          const suivant = sombreActuel() ? 'light' : 'dark';
+          racine.dataset.theme = suivant;
+          try { localStorage.setItem('aod-theme', suivant); } catch {}
+          etiqueter();
+        }),
+      );
+      etiqueter();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,17 @@
+---
+// Lupus, l'assistant : en préparation. La page présente le loup et annonce l'arrivée de l'assistant.
+import Page from '../layouts/Page.astro';
+import { BoutonLien } from '../kit/Boutons';
+import { Lupus3D } from '../kit/Lupus';
+---
+<Page titre="Lupus, l'assistant" actif="lupus" description="Lupus, l'assistant médical d'Atlas affûté sur la dermatologie : bientôt disponible.">
+  <div class="aod-lupus-attente">
+    <div class="aod-lupus-attente__loup"><Lupus3D client:visible largeur={230} /></div>
+    <h1 class="aod-lupus-attente__titre">
+      Bonjour, je suis Lupus,
+      <span>ton assistant médical affûté sur la dermatologie</span>
+    </h1>
+    <p class="aod-chapo">Je suis encore en préparation. Bientôt, tu pourras me poser tes questions cliniques : je répondrai en citant mes sources.</p>
+    <BoutonLien href="/pathologies" variante="secondaire">En attendant, voir les pathologies</BoutonLien>
+  </div>
+</Page>

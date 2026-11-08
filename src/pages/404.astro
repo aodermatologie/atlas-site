@@ -1,0 +1,14 @@
+---
+import Page from '../layouts/Page.astro';
+import { BoutonLien } from '../kit/Boutons';
+---
+<Page titre="Page introuvable" indexer={false}>
+  <div class="aod-coffre">
+    <h1 class="aod-titre-1" style="margin:0">Page introuvable</h1>
+    <p class="aod-chapo">Cette adresse ne correspond à aucune page d'Atlas. La fiche a peut-être changé de nom.</p>
+    <div style="display:flex;flex-wrap:wrap;gap:8px;justify-content:center">
+      <BoutonLien href="/pathologies">Voir les pathologies</BoutonLien>
+      <BoutonLien href="/" variante="secondaire">Retour à l'accueil</BoutonLien>
+    </div>
+  </div>
+</Page>

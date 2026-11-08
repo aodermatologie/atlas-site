@@ -1,0 +1,92 @@
+# Rubriques du module Dermoscopie. Les structures sont décrites dans structures.json.
+- id: lesions-pigmentees
+  titre: Lésions pigmentées
+  description: Nævus, mélanome, kératose séborrhéique, carcinome basocellulaire pigmenté.
+  illustration: pig--reseau-pigmente-typique.svg
+  ordre: 1
+  sections:
+  - titre: Lésions mélanocytaires
+    structures:
+    - pig--reseau-pigmente-typique
+    - pig--reseau-pigmente-atypique
+    - pig--points-et-globules
+    - pig--stries-et-pseudopodes
+    - pig--voile-bleu-blanc
+    - pig--structures-de-regression
+    - pig--taches-pigmentees
+  - titre: Lésions non mélanocytaires
+    structures:
+    - pig--kystes-grains-de-milium
+    - pig--pseudo-comedons
+    - pig--nids-ovoides-et-feuilles-d-erable
+- id: lesions-non-pigmentees
+  titre: Lésions non pigmentées
+  description: 'Carcinomes, mélanome achromique, angiomes : la lecture des vaisseaux.'
+  illustration: nonpig--vaisseaux-arborescents.svg
+  ordre: 2
+  sections:
+  - titre: null
+    structures:
+    - nonpig--vaisseaux-arborescents
+    - nonpig--vaisseaux-glomerulaires
+    - nonpig--vaisseaux-en-epingle-a-cheveux
+    - nonpig--vaisseaux-polymorphes
+    - nonpig--lacunes-rouge-bleu
+    - nonpig--structures-blanches-brillantes
+- id: paumes-plantes-et-visage
+  titre: Paumes, plantes et visage
+  description: Les aspects propres à la peau acrale et à la peau du visage.
+  illustration: acral--aspect-parallele-des-cretes.svg
+  ordre: 3
+  sections:
+  - titre: Paumes et plantes
+    structures:
+    - acral--aspect-parallele-des-sillons
+    - acral--aspect-en-treillis
+    - acral--aspect-parallele-des-cretes
+  - titre: Visage
+    structures:
+    - acral--pseudo-reseau
+    - acral--pigmentation-asymetrique-des-orifices
+- id: cheveux-et-cuir-chevelu
+  titre: Cheveux et cuir chevelu
+  description: 'Trichoscopie : pelade, teigne, alopécie androgénétique.'
+  illustration: cheveux--cheveux-en-point-d-exclamation.svg
+  ordre: 4
+  sections:
+  - titre: null
+    structures:
+    - cheveux--points-jaunes
+    - cheveux--points-noirs
+    - cheveux--cheveux-en-point-d-exclamation
+    - cheveux--cheveux-en-virgule-et-en-tire-bouchon
+    - cheveux--anisotrichose
+- id: ongles
+  titre: Ongles
+  description: 'Onychoscopie : mélanonychie, hématome, onychomycose, psoriasis.'
+  illustration: ongles--bande-melanique-reguliere.svg
+  ordre: 5
+  sections:
+  - titre: null
+    structures:
+    - ongles--bande-melanique-reguliere
+    - ongles--bande-melanique-irreguliere
+    - ongles--hematome-sous-ungueal
+    - ongles--onychomycose
+    - ongles--psoriasis-ungueal
+- id: dermatoses-inflammatoires-et-parasitaires
+  titre: Dermatoses inflammatoires et parasitaires
+  description: Psoriasis, lichen plan, rosacée, gale, pédiculose, molluscum.
+  illustration: inflam--stries-de-wickham.svg
+  ordre: 6
+  sections:
+  - titre: Dermatoses inflammatoires
+    structures:
+    - inflam--vaisseaux-punctiformes-et-squames-blanches
+    - inflam--stries-de-wickham
+    - inflam--vaisseaux-en-polygones
+  - titre: Infections et infestations
+    structures:
+    - inflam--signe-du-deltaplane
+    - inflam--lentes
+    - inflam--structures-polylobees-centrales

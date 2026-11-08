@@ -1,0 +1,42 @@
+---
+// Une rubrique de dermoscopie : ses structures, regroupées par section, chacune avec son schéma.
+import { getCollection, getEntries } from 'astro:content';
+import Page from '../../layouts/Page.astro';
+import { FilAriane } from '../../kit/Navigation';
+
+export async function getStaticPaths() {
+  const rubriques = await getCollection('rubriques');
+  return rubriques.map((rubrique) => ({ params: { rubrique: rubrique.id }, props: { rubrique } }));
+}
+
+const { rubrique } = Astro.props;
+const sections = await Promise.all(
+  rubrique.data.sections.map(async (s) => ({ titre: s.titre, structures: await getEntries(s.structures) })),
+);
+---
+<Page titre={`${rubrique.data.titre} · Dermoscopie`} actif="dermoscopie" description={rubrique.data.description}>
+  <div style="display:flex;flex-direction:column;gap:24px">
+    <FilAriane niveaux={[{ libelle: 'Dermoscopie', href: '/dermoscopie' }, { libelle: rubrique.data.titre }]} />
+    <header style="display:flex;flex-direction:column;gap:12px">
+      <h1 class="aod-titre-1" style="margin:0">{rubrique.data.titre}</h1>
+      <p class="aod-chapo">{rubrique.data.description}</p>
+    </header>
+    {sections.map((s) => (
+      <section style="display:flex;flex-direction:column;gap:14px">
+        {s.titre && <h2 class="aod-titre-3" style="margin:0">{s.titre}</h2>}
+        <div class="aod-grille-cartes">
+          {s.structures.map((st) => (
+            <article class="aod-carte aod-structure" id={st.id}>
+              <img src={`/illustrations/dermoscopie/${st.data.illustration}`} alt={`Schéma : ${st.data.nom.toLowerCase()}`} width="104" height="104" loading="lazy" decoding="async" style="flex:0 0 104px" />
+              <div class="aod-structure__corps">
+                <h3 class="aod-carte__titre" style="margin:0;font-size:20px">{st.data.nom}</h3>
+                <p class="aod-carte__texte">{st.data.definition}</p>
+                <p class="aod-structure__evoque"><span>Évoque</span>{st.data.evoque}</p>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+    ))}
+  </div>
+</Page>

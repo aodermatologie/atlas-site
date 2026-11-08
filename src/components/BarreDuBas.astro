@@ -1,0 +1,24 @@
+---
+// Barre du bas (mobile) : rectangle flottant, icônes seules, module actif dans un carré arrondi.
+// Le loup n'a pas de carré : il passe du gris-brun à ses couleurs sarcelle.
+import { IconeAtlas, IconeCoffreFort, IconeDermoscopie, IconePathologies } from '../kit/icones';
+import { IconeLupus } from '../kit/Lupus';
+import { MODULES, type IdModule } from '../lib/site';
+
+interface Props { actif?: IdModule }
+const { actif } = Astro.props;
+---
+<nav class="aod-barre" aria-label="Modules">
+  {MODULES.map((m) => (
+    <a href={m.href} aria-label={m.etiquette} aria-current={m.id === actif ? 'page' : undefined}
+      class:list={['aod-barre__lien', { 'aod-barre__lien--lupus': m.id === 'lupus' }]}>
+      <span class="aod-barre__selecteur">
+        {m.id === 'pathologies' && <IconePathologies taille={24} />}
+        {m.id === 'atlas' && <IconeAtlas taille={24} />}
+        {m.id === 'lupus' && <IconeLupus taille={24} variante={actif === 'lupus' ? 'sarcelle' : 'neutre'} />}
+        {m.id === 'dermoscopie' && <IconeDermoscopie taille={24} />}
+        {m.id === 'coffre-fort' && <IconeCoffreFort taille={24} />}
+      </span>
+    </a>
+  ))}
+</nav>

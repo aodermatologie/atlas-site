@@ -1,0 +1,132 @@
+/* Mise en page propre au site (en complément de components.css). */
+
+.aod-lien-evitement {
+  position: absolute; left: 12px; top: -60px; z-index: 100;
+  padding: 10px 14px; border-radius: var(--aod-r-m); background: var(--aod-action); color: var(--aod-sur-action);
+  font-weight: 600; text-decoration: none;
+}
+.aod-lien-evitement:focus { top: 12px; color: var(--aod-sur-action); }
+
+/* Pied de page toujours en bas, même sur une page courte */
+body { min-height: 100vh; min-height: 100dvh; display: flex; flex-direction: column; }
+body > main.aod-page { flex: 1 0 auto; width: 100%; }
+
+/* Bouton jour/nuit : les deux icônes sont présentes, la bonne s'affiche selon le mode. */
+.aod-theme__soleil { display: none; }
+:root[data-theme="dark"] .aod-theme__lune { display: none; }
+:root[data-theme="dark"] .aod-theme__soleil { display: inline-flex; }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .aod-theme__lune { display: none; }
+  :root:not([data-theme="light"]) .aod-theme__soleil { display: inline-flex; }
+}
+
+/* Sections repliables des fiches (balise <details>, fermées par défaut) */
+details.aod-section > summary { list-style: none; }
+details.aod-section > summary::-webkit-details-marker { display: none; }
+details.aod-section[open] > summary .aod-section__chevron { transform: rotate(180deg); }
+.aod-section__titre { margin: 0; font-family: var(--aod-font-titre); font-size: 20px; font-weight: 500; line-height: 1.3; }
+.aod-section__contenu > * + * { margin-top: 14px; }
+.aod-section__contenu p, .aod-section__contenu ul { margin: 0; }
+.aod-section__contenu ul { padding-left: 20px; display: flex; flex-direction: column; gap: 6px; }
+
+.aod-lecture { max-width: var(--aod-colonne-lecture); }
+
+/* Fiche et sommaire : liste latérale + contenu */
+.aod-deux-colonnes { display: flex; align-items: flex-start; gap: 48px; }
+.aod-colonne-laterale {
+  flex: 0 0 280px; position: sticky; top: 24px;
+  display: flex; flex-direction: column; gap: 12px; padding: 20px;
+  border: 1px solid var(--aod-bordure); border-radius: var(--aod-r-l); background: var(--aod-surface);
+}
+.aod-colonne-principale { flex: 1 1 auto; min-width: 0; max-width: 760px; display: flex; flex-direction: column; gap: 24px; }
+.aod-liste-patho { list-style: none; margin: 0; padding: 0; max-height: 60vh; overflow-y: auto; display: flex; flex-direction: column; gap: 2px; }
+.aod-liste-patho a, .aod-liste-patho span {
+  display: flex; align-items: center; min-height: 40px; padding: 0 10px; border-radius: var(--aod-r-s);
+  color: var(--aod-texte); font-size: var(--aod-t-ui); text-decoration: none;
+}
+.aod-liste-patho a:hover { background: var(--aod-survol); color: var(--aod-texte); }
+.aod-liste-patho a[aria-current="page"] { background: var(--aod-action-clair); color: var(--aod-action); font-weight: 600; }
+.aod-liste-patho .aod-a-venir { color: var(--aod-inactif); }
+.aod-liste-patho .aod-a-venir small { margin-left: auto; padding-left: 8px; flex: 0 0 auto; white-space: nowrap; font-size: 11px; }
+.aod-liste-patho__masque { opacity: .4; }
+.aod-bouton-liste { display: none; }
+
+@media (max-width: 760px) {
+  .aod-deux-colonnes { flex-direction: column; gap: 20px; }
+  .aod-colonne-laterale { position: static; flex: 0 0 auto; width: 100%; padding: 14px; }
+  .aod-liste-patho--repliee { display: none; }
+  .aod-bouton-liste { display: inline-flex; }
+  /* Sur une fiche, la liste latérale disparaît : le fil d'Ariane ramène au sommaire. */
+  .aod-colonne-laterale--fiche { display: none; }
+}
+
+.aod-familles { display: flex; flex-direction: column; gap: 32px; }
+.aod-famille__grille { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 8px; }
+.aod-famille__lien {
+  display: flex; align-items: center; justify-content: space-between; gap: 8px; min-height: 48px; padding: 8px 14px;
+  border: 1px solid var(--aod-bordure); border-radius: var(--aod-r-m); background: var(--aod-surface);
+  color: var(--aod-texte); font-size: var(--aod-t-ui); text-decoration: none;
+}
+a.aod-famille__lien:hover { border-color: var(--aod-action); color: var(--aod-action); }
+.aod-famille__lien--a-venir { color: var(--aod-inactif); border-style: dashed; }
+.aod-famille__lien--a-venir small { flex: 0 0 auto; white-space: nowrap; font-size: 11px; }
+
+.aod-badge {
+  display: inline-flex; align-items: center; height: 28px; padding: 0 10px; border-radius: var(--aod-r-pilule);
+  border: 1px solid var(--aod-precaution); color: var(--aod-precaution); font-size: 12px; font-weight: 600; width: fit-content;
+}
+.aod-actions-fiche { display: flex; flex-wrap: wrap; gap: 4px; }
+
+/* Photos dans les fiches */
+.aod-photos-dans-texte { margin-top: 14px; }
+.aod-photos-fiche { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; }
+.aod-photos-fiche figure { margin: 0; }
+.aod-photos-fiche figure { display: flex; flex-direction: column; }
+.aod-photos-fiche .aod-vignette { width: 100%; }
+.aod-photos-fiche figcaption { margin-top: 6px; font-size: 13px; line-height: 1.45; color: var(--aod-photo-legende); }
+.aod-photos-fiche figcaption small { display: block; margin-top: 2px; font-size: 12px; color: var(--aod-texte-3); }
+
+/* Accueil */
+.aod-accueil { display: flex; flex-direction: column; align-items: center; gap: 64px; }
+.aod-accueil__haut { width: 100%; max-width: 760px; display: flex; flex-direction: column; align-items: center; gap: 24px; text-align: center; }
+.aod-accueil__explorer { width: 100%; max-width: var(--aod-largeur-max); display: flex; flex-direction: column; gap: 20px; }
+.aod-recherche-accueil { position: relative; width: 100%; max-width: 640px; text-align: left; }
+.aod-recherche-accueil .aod-suggestions { position: absolute; left: 0; right: 0; top: calc(100% + 8px); z-index: 5; }
+
+/* Pied de page */
+.aod-pied {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 12px 24px; padding: 24px 32px;
+  border-top: 1px solid var(--aod-bordure); font-size: var(--aod-t-legende); color: var(--aod-texte-2);
+}
+.aod-pied p { flex: 1 1 420px; margin: 0; line-height: 1.5; }
+.aod-pied nav { display: flex; flex-wrap: wrap; gap: 16px; }
+.aod-pied a { color: var(--aod-texte-2); min-height: 44px; display: inline-flex; align-items: center; }
+/* Mention de licence : sa propre ligne, sous le texte et les liens */
+.aod-pied .aod-pied__licence { order: 3; flex-basis: 100%; font-size: 13px; color: var(--aod-texte-3); }
+.aod-pied .aod-pied__licence a { min-height: 0; display: inline; color: inherit; text-decoration: underline; }
+@media (max-width: 760px) { .aod-pied { padding: 20px 16px 110px; } }
+
+/* Coffre-fort */
+.aod-coffre { width: 100%; max-width: 460px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; gap: 20px; text-align: center; }
+.aod-coffre__tuile { width: 72px; height: 72px; border-radius: 20px; background: var(--aod-action-clair); color: var(--aod-action); display: flex; align-items: center; justify-content: center; }
+.aod-coffre__carte { width: 100%; display: flex; flex-direction: column; gap: 12px; text-align: left; }
+
+/* Pages de texte (mentions légales…) */
+.aod-texte-long { max-width: var(--aod-colonne-lecture); display: flex; flex-direction: column; gap: 16px; }
+.aod-texte-long h2 { margin: 16px 0 0; font-family: var(--aod-font-titre); font-size: var(--aod-t-titre-3); font-weight: 500; }
+.aod-texte-long p, .aod-texte-long ul { margin: 0; }
+.aod-a-completer { background: var(--aod-action-clair); color: var(--aod-action); padding: 0 4px; border-radius: 3px; font-weight: 600; }
+
+/* Sources en bas de fiche */
+.aod-sources-fiche { margin: 0; padding-left: 22px; display: flex; flex-direction: column; gap: 10px; }
+.aod-sources-fiche li { line-height: 1.45; }
+.aod-sources-fiche small { display: block; font-size: var(--aod-t-legende); color: var(--aod-texte-3); }
+
+/* Lupus, en préparation */
+.aod-lupus-attente { max-width: 620px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; gap: 20px; text-align: center; }
+.aod-lupus-attente__titre { margin: 0; font-family: var(--aod-font-titre); font-size: var(--aod-t-titre-2); font-weight: 450; line-height: 1.2; }
+.aod-lupus-attente__titre span { display: block; font-style: italic; color: var(--aod-action); }
+@media (max-width: 760px) {
+  .aod-lupus-attente__titre { font-size: var(--aod-t-titre-2-mobile); }
+  .aod-lupus-attente__loup { zoom: .72; }
+}

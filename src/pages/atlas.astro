@@ -1,0 +1,18 @@
+---
+// Atlas photo : mur de photos filtrable (pathologie, localisation, lésion élémentaire).
+import Page from '../layouts/Page.astro';
+import MurAtlas from '../islands/MurAtlas';
+import { LESIONS, LOCALISATIONS } from '../content.config';
+import { photosAffichees } from '../lib/site';
+
+const photos = (await photosAffichees()).sort((a, b) => a.pathologie.localeCompare(b.pathologie, 'fr'));
+---
+<Page titre="Atlas photo" actif="atlas" description="Les photos cliniques d'Atlas, à filtrer par pathologie, localisation et lésion élémentaire.">
+  <div style="display:flex;flex-direction:column;gap:24px">
+    <header style="display:flex;flex-direction:column;gap:12px">
+      <h1 class="aod-titre-1" style="margin:0">Atlas photo</h1>
+      <p class="aod-chapo">Les photos cliniques, à filtrer par pathologie, localisation et lésion élémentaire.</p>
+    </header>
+    <MurAtlas client:load photos={photos} localisations={[...LOCALISATIONS]} lesions={[...LESIONS]} />
+  </div>
+</Page>
