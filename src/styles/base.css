@@ -1,5 +1,5 @@
 /* Atlas, ouvert de dermatologie — base.
-   À charger après tokens.css. Polices : voir le README (Fraunces et Inter, Google Fonts). */
+   À charger après tokens.css. Polices : Fraunces (titres) et Atkinson Hyperlegible Next (texte), hébergées par le site (paquets @fontsource-variable). */
 
 *, *::before, *::after { box-sizing: border-box; }
 

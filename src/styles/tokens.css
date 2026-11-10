@@ -6,7 +6,7 @@
 :root {
   /* Typographie */
   --aod-font-titre: 'Fraunces Variable', 'Fraunces', Georgia, serif;
-  --aod-font-texte: 'Inter Variable', 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --aod-font-texte: 'Atkinson Hyperlegible Next Variable', 'Atkinson Hyperlegible Next', system-ui, -apple-system, 'Segoe UI', sans-serif;
   --aod-t-titre-1: 40px;
   --aod-t-titre-1-mobile: 32px;
   --aod-t-titre-2: 28px;

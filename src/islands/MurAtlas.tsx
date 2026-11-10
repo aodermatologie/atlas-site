@@ -85,7 +85,9 @@ export default function MurAtlas({ photos, localisations, lesions }: { photos: P
         </div>
       )}
 
-      {nTotal === 0 ? (
+      {photos.length === 0 ? (
+        <EtatVide titre="Les photos arrivent bientôt" texte="L’atlas se remplit au fil des ajouts." />
+      ) : nTotal === 0 ? (
         <EtatVide titre="Aucune photo ne correspond" texte="Retirez un filtre pour élargir la recherche."
           action={<Bouton variante="secondaire" compact onClick={() => setSel({ pathologie: [], localisation: [], lesion: [] })}>Effacer les filtres</Bouton>} />
       ) : (
